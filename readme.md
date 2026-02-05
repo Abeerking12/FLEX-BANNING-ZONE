@@ -40,4 +40,4 @@
 
 #### 📱 Termux (Copy & Paste)
 ```bash
-pkg update && pkg upgrade -y && pkg install python git -y && pip install colorama python-dotenv && git clone [https://github.com/CRYPTOLORD25/Crypto-banning-tools.git](https://github.com/CRYPTOLORD25/Crypto-banning-tools.git) && cd Crypto-banning-tools && python ban.py
+pkg update && pkg upgrade -y && pkg install python git -y && pip install colorama python-dotenv && git clone https://github.com/Abeerking12/FLEX-BANNING-ZONE && cd FLEX-BANNING-ZONE && python ban.py
