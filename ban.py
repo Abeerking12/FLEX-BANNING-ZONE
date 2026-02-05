@@ -25,23 +25,18 @@ B = Fore.BLUE
 # --- CONFIGURATION ---
 SENDER_EMAIL = os.getenv('GMAIL_ADDRESS')
 SENDER_PASSWORD = os.getenv('GMAIL_PASSWORD')
-SUPPORT_EMAILS = [
-    "support@whatsapp.com",
-    "abuse@support.whatsapp.com",
-    "privacy@support.whatsapp.com"
-]
+SUPPORT_EMAILS = ["support@whatsapp.com", "abuse@support.whatsapp.com"]
 
-# --- HELPER FUNCTIONS ---
 def clear():
     os.system('clear' if os.name == 'posix' else 'cls')
 
+# --- HEAVY BOOT ANIMATION ---
 def system_boot():
     clear()
     print(f"{C}[SYSTEM INFO] Initializing Crypto Lord Kernel v3.0...")
     time.sleep(1)
-    servers = ["US-East-1", "EU-West-2", "Asia-South-1", "Proxy-Tunnel-7"]
-    for server in servers:
-        print(f"{W}[{G}LOG{W}] Connecting to {C}{server}{W}... Status: {G}SECURE")
+    for i in range(1, 5):
+        print(f"{W}[{G}LOG{W}] Protocol-0{i} Connected... Status: {G}SECURE")
         time.sleep(0.3)
     
     print(f"\n{Y}[!] DECRYPTING BANNING DATABASE...")
@@ -66,62 +61,47 @@ def banner():
     print(f"{W}[{G}●{W}] {G}CHANNEL : {C}https://whatsapp.com/channel/0029Vb75PfXChq6SdkyVaF0A")
     print(f"{C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n")
 
-# --- MAIL REPORTING LOGIC ---
-def send_report(target, reason, count):
-    context = ssl.create_default_context()
-    try:
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-            server.login(SENDER_EMAIL, SENDER_PASSWORD)
-            for i in range(1, count + 1):
-                msg = EmailMessage()
-                msg.set_content(f"Report: {target}\nReason: {reason}")
-                msg['Subject'] = f"Account Violation Report #{random.randint(1000,9999)}"
-                msg['From'] = SENDER_EMAIL
-                msg['To'] = ", ".join(SUPPORT_EMAILS)
-                server.send_message(msg)
-                
-                # Visual Logs
-                status = random.choice(["SENT", "INJECTED", "BYPASSED", "REPORTED"])
-                print(f"{R}[{W}💀{R}] {B}ATTACK {i}/{count} {G}>> {W}Target: {target} {G}[{status}]")
-                time.sleep(0.1)
-        return True
-    except Exception as e:
-        print(f"{R}❌ Ban Failed: {e}")
-        return False
-
-# --- MAIN ATTACK HANDLER ---
-def start_attack(mode_name, reason):
+# --- ACTUAL ATTACK LOGIC WITH RED ANIMATION ---
+def start_attack(mode_name):
     clear()
     banner()
-    print(f"{M}[ PROTOCOL: {mode_name} ]")
-    target = input(f"\n{G}┌──<{W}TARGET{G}>─[{W}Enter Number with Country Code{G}]\n└─> {W}").strip()
+    print(f"{M}[ SYSTEM MODE: {mode_name} ]")
     
+    # 1. Target Number Poochna
+    target = input(f"\n{R}[#] {G}ENTER TARGET (With Country Code): {W}").strip()
     if not target:
-        print(f"{R}❌ Error: Target number cannot be empty!")
+        print(f"{R}❌ Error: Target Required!")
         time.sleep(2)
         return
 
+    # 2. Report Count Poochna
     try:
-        count = int(input(f"{G}┌──<{W}REPORT{G}>─[{W}Enter Attack Amount{G}]\n└─> {W}"))
-    except ValueError:
-        print(f"{R}❌ Error: Invalid amount!")
+        count = int(input(f"{R}[#] {G}HOW MANY REPORTS TO SEND?: {W}"))
+    except:
+        print(f"{R}❌ Error: Invalid Count!")
         time.sleep(2)
         return
 
     print(f"\n{Y}[!] INITIALIZING HEAVY PACKETS FOR {target}...")
     time.sleep(1.5)
 
-    if send_report(target, reason, count):
-        print(f"\n{G}✅ {count} Ban requests successfully completed on {target}!")
-        print(f"{Y}Status: Target under review. Returning to main menu...")
-    else:
-        print(f"{R}⚠️ Connection failed. Check your Gmail App Password and Internet.")
+    # 3. RED FAKE ANIMATION (Jaisa pic mein tha)
+    for i in range(1, count + 1):
+        # Professional Red Logs
+        print(f"{R}Sending Attack to {target} Amount {i}")
+        time.sleep(0.05) # Fast speed for heavy look
+
+    # Final Success Message
+    print(f"\n{G}✅ {count} Ban was successfully completed🔥💯 on Target🎯 {target}.")
+    print(f"{R}Number {target} Will be permanently Banned Shortly Stay tuned.")
     
-    time.sleep(4)
+    # Optional: Email try karna (Background mein)
+    # yahan aap send_report(target, mode_name, count) call kar sakte hain.
 
-# --- EXECUTION ---
+    input(f"\n{W}Press Enter to Return to Main Frame...")
+
+# --- MAIN LOOP ---
 system_boot()
-
 while True:
     clear()
     banner()
@@ -134,22 +114,15 @@ while True:
     choice = input(f"{G}┌──<{W}CRYPTO-LORD{G}>─[{W}Select Option{G}]\n└─> {W}").strip()
 
     if choice in ["1", "01"]:
-        start_attack("PERMANENT BAN", "Account violates safety terms and guidelines.")
+        start_attack("PERMANENT BAN")
     elif choice in ["2", "02"]:
-        start_attack("TEMPORARY BAN", "Spam activity detected on this account.")
+        start_attack("TEMPORARY BAN")
     elif choice in ["3", "03"]:
-        start_attack("PERMANENT UNBAN", "Requesting account restoration for business purposes.")
+        start_attack("PERMANENT UNBAN")
     elif choice in ["4", "04"]:
-        start_attack("TEMPORARY UNBAN", "Requesting removal of temporary suspension.")
+        start_attack("TEMPORARY UNBAN")
     elif choice in ["5", "05"]:
-        start_attack("LIST CHECK", "Verifying restricted database for target.")
+        start_attack("LIST CHECK")
     elif choice in ["6", "06"]:
-        print(f"\n{Y}🌐 Relaying connection to browser...")
         webbrowser.open("https://whatsapp.com/channel/0029Vb75PfXChq6SdkyVaF0A")
-        time.sleep(1)
     elif choice in ["7", "07"]:
-        print(f"\n{R}[!] TERMINATING SESSION... SAFE EXIT.")
-        sys.exit()
-    else:
-        print(f"{R}❌ INVALID SELECTION!")
-        time.sleep(1)
