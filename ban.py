@@ -22,52 +22,29 @@ W = Fore.WHITE
 M = Fore.MAGENTA
 B = Fore.BLUE
 
-# --- ADVANCED SYSTEM BOOT ANIMATION ---
+# --- CLEAR SCREEN ---
+def clear():
+    os.system('clear' if os.name == 'posix' else 'cls')
+
+# --- SYSTEM BOOT ---
 def system_boot():
     clear()
     print(f"{C}[SYSTEM INFO] Initializing Crypto Lord Kernel v3.0...")
     time.sleep(1)
-    
-    # Fake Server Logs
     servers = ["US-East-1", "EU-West-2", "Asia-South-1", "Proxy-Tunnel-7"]
     for server in servers:
-        status = random.choice(["ONLINE", "SECURE", "ENCRYPTED"])
-        ping = random.randint(10, 99)
-        print(f"{W}[{G}LOG{W}] Connecting to {C}{server}{W}... Status: {G}{status} {W}({ping}ms)")
-        time.sleep(0.4)
-
-    print(f"\n{Y}[!] DECRYPTING BANNING DATABASE...")
-    # Progress Bar Animation
-    for i in range(0, 101, 10):
-        sys.stdout.write(f"\r{W}[{M}{'#' * (i//5)}{' ' * (20 - i//5)}{W}] {i}% Complete")
-        sys.stdout.flush()
+        print(f"{W}[{G}LOG{W}] Connecting to {C}{server}{W}... Status: {G}SECURE")
         time.sleep(0.3)
     
-    print(f"\n\n{G}✔️ SYSTEM BYPASS SUCCESSFUL")
-    print(f"{G}✔️ ANTI-DETECTION LAYER ACTIVE")
-    print(f"{C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-    time.sleep(1.5)
-
-# --- DYNAMIC UPDATE CHECKER ---
-def check_updates():
-    print(f"{B}[*] SYNCHRONIZING WITH GITHUB REPO...")
+    print(f"\n{Y}[!] DECRYPTING BANNING DATABASE...")
+    for i in range(0, 101, 20):
+        sys.stdout.write(f"\r{W}[{M}{'#' * (i//5)}{' ' * (20 - i//5)}{W}] {i}% Complete")
+        sys.stdout.flush()
+        time.sleep(0.2)
+    print(f"\n\n{G}✔️ SYSTEM BYPASS SUCCESSFUL\n{C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
     time.sleep(1)
-    print(f"{G}[+] NO NEW UPDATES FOUND. YOU ARE ON THE LATEST VERSION.")
-    time.sleep(0.8)
 
-# --- AUTO-OPEN CHANNEL ---
-def join_channel():
-    channel_url = "https://whatsapp.com/channel/0029Vb75PfXChq6SdkyVaF0A"
-    print(f"\n{Y}🌐 RELAYING CONNECTION TO WHATSAPP...")
-    time.sleep(1)
-    try:
-        webbrowser.open(channel_url)
-        print(f"{G}✅ CHANNEL ACCESS GRANTED!")
-    except:
-        print(f"{R}❌ LINK: {channel_url}")
-    input(f"\n{W}PRESS ENTER TO RETURN TO MAIN-FRAME...")
-
-# --- PROFESSIONAL BANNER ---
+# --- BANNER ---
 def banner():
     print(f"{C}⚡ {W}═══[ {G}𝗖𝗥𝗬𝗣𝗧𝗢 𝗟𝗢𝗥𝗗 𝗕𝗔𝗡𝗡𝗜𝗡𝗚 𝗧𝗢𝗢𝗟𝗦 {W}]═══ {C}⚡")
     print(f"{G}" + r"""
@@ -82,14 +59,53 @@ def banner():
     print(f"{W}[{G}●{W}] {G}CHANNEL : {C}https://whatsapp.com/channel/0029Vb75PfXChq6SdkyVaF0A")
     print(f"{C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n")
 
-# --- MAIN LOGIC ---
-clear = lambda: os.system('clear' if os.name == 'posix' else 'cls')
+# --- ATTACK FUNCTION (For 1, 2, 3, 4, 5) ---
+def start_attack(mode_name):
+    clear()
+    banner()
+    print(f"{M}[ PROTOCOL: {mode_name} ]")
+    target = input(f"\n{G}┌──<{W}TARGET{G}>─[{W}Enter Number{G}]\n└─> {W}").strip()
+    
+    if not target:
+        print(f"{R}❌ Error: Target cannot be empty!")
+        time.sleep(1.5)
+        return
 
-# Heavy Boot Sequence
+    try:
+        count = int(input(f"{G}┌──<{W}REPORT{G}>─[{W}Enter Amount{G}]\n└─> {W}"))
+    except ValueError:
+        print(f"{R}❌ Error: Please enter a valid number for reports!")
+        time.sleep(1.5)
+        return
+
+    print(f"\n{Y}[!] INITIALIZING PACKETS FOR {target}...")
+    time.sleep(1)
+
+    # Attack Loop
+    for i in range(1, count + 1):
+        # Professional Attack Logs
+        status = random.choice(["SENT", "INJECTED", "BYPASSED", "REPORTED"])
+        print(f"{R}[{W}💀{R}] {B}REPORT {i}/{count} {G}>> {W}Target: {target} {G}[{status}]")
+        time.sleep(0.05) # Speed control
+
+    print(f"\n{G}✅ {count} Ban requests successfully completed on {target}!")
+    print(f"{Y}Status: Target neutralized shortly. Return to main menu...")
+    time.sleep(3)
+
+# --- JOIN CHANNEL ---
+def join_channel():
+    url = "https://whatsapp.com/channel/0029Vb75PfXChq6SdkyVaF0A"
+    print(f"\n{Y}🌐 Opening WhatsApp Channel in browser...")
+    time.sleep(1)
+    webbrowser.open(url)
+    print(f"{G}✅ Action Complete.")
+    time.sleep(1)
+
+# --- STARTUP ---
 system_boot()
-check_updates()
 
 while True:
+    clear()
     banner()
     print(f"{B}[01] {W}𝗕𝗮𝗻 𝗣𝗲𝗿𝗺𝗮𝗻𝗲𝗻𝘁         {B}[02] {W}𝗕𝗮𝗻 𝗧𝗲𝗺𝗽𝗼𝗿𝗮𝗿𝘆")
     print(f"{B}[03] {W}𝗨𝗻𝗯𝗮𝗻 𝗣𝗲𝗿𝗺𝗮𝗻𝗲𝗻𝘁       {B}[04] {W}𝗨𝗻𝗯𝗮𝗻 𝗧𝗲𝗺𝗽𝗼𝗿𝗮𝗿𝘆")
@@ -99,18 +115,22 @@ while True:
     print(f"\n{C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
     choice = input(f"{G}┌──<{W}CRYPTO-LORD{G}>─[{W}Select Option{G}]\n└─> {W}").strip()
 
-    if choice == "1" or choice == "01":
-        # ban_permanent() logic here
-        pass
-    elif choice == "6" or choice == "06":
+    if choice in ["1", "01"]:
+        start_attack("PERMANENT BAN")
+    elif choice in ["2", "02"]:
+        start_attack("TEMPORARY BAN")
+    elif choice in ["3", "03"]:
+        start_attack("PERMANENT UNBAN")
+    elif choice in ["4", "04"]:
+        start_attack("TEMPORARY UNBAN")
+    elif choice in ["5", "05"]:
+        start_attack("FETCH BANNED LIST")
+    elif choice in ["6", "06"]:
         join_channel()
-        clear()
-    elif choice == "7" or choice == "07":
-        print(f"\n{R}[!] TERMINATING SESSION... ENCRYPTING LOGS...{N}")
-        time.sleep(1.5)
-        break
+    elif choice in ["7", "07"]:
+        print(f"\n{R}[!] TERMINATING SESSION... SAFE EXIT.{Style.RESET_ALL}")
+        time.sleep(1)
+        sys.exit()
     else:
         print(f"{R}❌ INVALID SELECTION!")
         time.sleep(1)
-    
-    clear()
